@@ -1,20 +1,46 @@
+from string import ascii_uppercase
+
+
 class Alphabet:
-    def __init__(self, lang, letters):
-        self.lang = lang
-        self.letters = letters
+
+    def __init__(self, language, letters_str):
+        self.lang = language
+        self.letters = list(letters_str)
+
+    # Печатаем все буквы алфавита
 
     def print(self):
-        print("Alphabet:", self.lang)
-        print("Letters:", self.letters)
+        print(self.letters)
 
     def letters_num(self):
-        return len(self.letters)
-
-english_alphabet = Alphabet("English", ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"])
+        len(self.letters)
 
 
-english_alphabet.print()
+# Английский алфавит
+
+class EngAlphabet(Alphabet):
+
+    __letters_num = 26
+
+    def __init__(self):
+        super().__init__('En', ascii_uppercase)
 
 
-num_of_letters = english_alphabet.letters_num()
-print("Number of letters in the alphabet:", num_of_letters)
+    def is_en_letter(self, letter):
+        if letter.upper() in self.letters:
+            return True
+        return False
+    
+    def letters_num(self):
+        return EngAlphabet.__letters_num
+    
+    @staticmethod
+    def example():
+        print('Eng Example: This is example.')
+
+
+# Tests
+
+if __name__ == '__main__':
+    eng_alphabet = EngAlphabet()
+    eng_alphabet.print()
